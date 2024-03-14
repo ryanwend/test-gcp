@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  gmail_user: "ryan.wendling@state.co.us"  
+
 steps:
 - task: UsePythonVersion@0
   inputs:
