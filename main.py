@@ -23,11 +23,11 @@ try:
     # Read token data from token.json
     logger.info(f'Reading in token.json elements to reconstruct json')
     # Read environment variables
-    client_id = os.environ.get("CLIENT_ID")
-    client_secret = os.environ.get("CLIENT_SECRET")
-    refresh_token = os.environ.get("REFRESH_TOKEN")
-    token_uri = os.environ.get("TOKEN_URI")
-    token_expiry = os.environ.get("TOKEN_EXPIRY")
+    client_id = os.environ.get("client_id")
+    client_secret = os.environ.get("client_secret")
+    refresh_token = os.environ.get("refresh_token")
+    token_uri = os.environ.get("token_uri")
+    token_expiry = os.environ.get("token_expiry")
 
     # Construct JSON object
     token_data = {
