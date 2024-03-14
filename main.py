@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 #%% Set up Logging
-log_email = 'ryan.wendling@state.co.us' #os.environ['gmail_user']
+log_email = os.environ['gmail_user']
 task_name = 'Testing Google Cloud Function'
 email_flag = 'LogLabel15'
 
