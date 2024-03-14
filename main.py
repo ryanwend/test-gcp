@@ -35,7 +35,7 @@ try:
         "client_secret": client_secret,
         "refresh_token": refresh_token,
         "token_uri": token_uri,
-        "token_expiry": token_expiry
+        "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
     }
 
     # Create OAuth 2.0 credentials object using token data
