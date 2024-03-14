@@ -30,12 +30,7 @@ steps:
     gmail_app_pwd: $(gmail_app_pwd)
   displayName: 'Map secret variable'
   
-  # Map secret variable as environment variable
-- bash: |
-    echo "export gmail_user=$gmail_user" >> $(Agent.BuildDirectory)/.env
-  env:
-    gmail_user: $(gmail_user)
-  displayName: 'Map secret variable'
+
 
 - script: python main.py
   env:
