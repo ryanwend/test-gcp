@@ -32,5 +32,6 @@ steps:
 - script: python main.py
   env:
     gmail_app_pwd: $(gmail_app_pwd)
+    gmail_user: $(gmail_user)
 
 - script: python main.py
