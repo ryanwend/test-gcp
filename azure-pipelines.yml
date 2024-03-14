@@ -9,8 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  gmail_user: "ryan.wendling@state.co.us"  
 
 steps:
 - task: UsePythonVersion@0
@@ -28,8 +26,10 @@ steps:
 # Map secret variable as environment variable
 - bash: |
     echo "export gmail_app_pwd=$gmail_app_pwd" >> $(Agent.BuildDirectory)/.env
+    echo "export gmail_user=$gmail_user" >> $(Agent.BuildDirectory)/.env
   env:
     gmail_app_pwd: $(gmail_app_pwd)
+    gmail_user: $(gmail_user)
   displayName: 'Map secret variable'
 
 - script: python main.py
