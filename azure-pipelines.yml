@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
 - task: UsePythonVersion@0
   inputs:
@@ -28,6 +29,8 @@ steps:
   env:
     gmail_app_pwd: $(gmail_app_pwd)
   displayName: 'Map secret variable'
+  
+
 
 - script: python main.py
   env:
