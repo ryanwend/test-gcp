@@ -24,13 +24,13 @@ steps:
 
 # Map secret variable as environment variable
 - bash: |
-    echo "export MY_SECRET_VARIABLE=$MY_SECRET_VARIABLE_VALUE" >> $(Agent.BuildDirectory)/.env
+    echo "export gmail_app_pwd=$gmail_app_pwd" >> $(Agent.BuildDirectory)/.env
   env:
-    MY_SECRET_VARIABLE_VALUE: $(gmail_app_pwd)
+    gmail_app_pwd: $(gmail_app_pwd)
   displayName: 'Map secret variable'
 
 - script: python main.py
   env:
-    gmail_app_pwd: $(MY_SECRET_VARIABLE)
+    gmail_app_pwd: $(gmail_app_pwd)
 
 - script: python main.py
