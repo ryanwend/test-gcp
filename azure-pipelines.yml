@@ -22,4 +22,16 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
+# Map secret variable as environment variable
+- bash: |
+    echo "export gmail_app_pwd=$gmail_app_pwd" >> $(Agent.BuildDirectory)/.env
+  env:
+    gmail_app_pwd: $(gmail_app_pwd)
+  displayName: 'Map secret variable'
+
+- script: python main.py
+  env:
+    gmail_app_pwd: $(gmail_app_pwd)
+    gmail_user: $(gmail_user)
+
 - script: python main.py
