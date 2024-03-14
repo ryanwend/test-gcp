@@ -29,6 +29,10 @@ try:
     token_uri = os.environ.get("token_uri")
     token_expiry = os.environ.get("token_expiry")
 
+    # Print out environment variables for debugging
+    logger.debug(f"token_uri: {token_uri}")
+    logger.debug(f"token_expiry: {token_expiry}")
+
     # Construct JSON object
     token_data = {
         "client_id": client_id,
