@@ -23,12 +23,22 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-# Map secret variable as environment variable
+# Map secret variables as environment variables
 - bash: |
     echo "export gmail_app_pwd=$gmail_app_pwd" >> $(Agent.BuildDirectory)/.env
+    echo "export client_id=$client_id" >> $(Agent.BuildDirectory)/.env
+    echo "export client_secret=$client_secret" >> $(Agent.BuildDirectory)/.env
+    echo "export refresh_token=$refresh_token" >> $(Agent.BuildDirectory)/.env
+    echo "export token_uri=$token_uri" >> $(Agent.BuildDirectory)/.env
+    echo "export token_expiry=$token_expiry" >> $(Agent.BuildDirectory)/.env
   env:
     gmail_app_pwd: $(gmail_app_pwd)
-  displayName: 'Map secret variable'
+    client_id: $(client_id)
+    client_secret: $(client_secret)
+    refresh_token: $(refresh_token)
+    token_uri: $(token_uri)
+    token_expiry: $(token_expiry)
+  displayName: 'Map secret variables'
   
 
 
