@@ -3,9 +3,11 @@ from doh_tools.custom_logging import set_logging, send_log_over_email
 import pandas as pd
 from datetime import datetime
 from google.oauth2.credentials import Credentials
+from google.oauth2 import service_account
 from google.cloud import storage
 import os
 import io
+import json
 
 
 #%% Set up Logging
@@ -20,30 +22,14 @@ logger = set_logging(log_console=False, log_email=True)
 
 
 try:
-    # Read token data from token.json
-    logger.info(f'Reading in token.json elements to reconstruct json')
-    # Read environment variables
-    client_id = os.environ.get("client_id")
-    client_secret = os.environ.get("client_secret")
-    refresh_token = os.environ.get("refresh_token")
-    token_uri = os.environ.get("token_uri")
-    token_expiry = os.environ.get("token_expiry")
+    # Load the credentials JSON from the environment variable
+    credentials_json = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
-    # Print out environment variables for debugging
-    logger.debug(f"token_uri: {token_uri}")
-    logger.debug(f"token_expiry: {token_expiry}")
+    # Parse the JSON content
+    credentials_info = json.loads(credentials_json)
 
-    # Construct JSON object
-    token_data = {
-        "client_id": client_id,
-        "client_secret": client_secret,
-        "refresh_token": refresh_token,
-        "token_uri": token_uri,
-        "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
-    }
-
-    # Create OAuth 2.0 credentials object using token data
-    credentials = Credentials.from_authorized_user_info(token_data)
+    # Create a credentials object
+    credentials = service_account.Credentials.from_service_account_info(credentials_info)
 
     # Create a GCS client using the credentials
     storage_client = storage.Client(credentials=credentials)
