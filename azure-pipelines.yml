@@ -26,18 +26,12 @@ steps:
 # Map secret variables as environment variables
 - bash: |
     echo "export gmail_app_pwd=$gmail_app_pwd" >> $(Agent.BuildDirectory)/.env
-    echo "export client_id=$client_id" >> $(Agent.BuildDirectory)/.env
-    echo "export client_secret=$client_secret" >> $(Agent.BuildDirectory)/.env
-    echo "export refresh_token=$refresh_token" >> $(Agent.BuildDirectory)/.env
-    echo "export token_uri=$token_uri" >> $(Agent.BuildDirectory)/.env
-    echo "export token_expiry=$token_expiry" >> $(Agent.BuildDirectory)/.env
+    echo "export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" >> $(Agent.BuildDirectory)/.env
+    
   env:
     gmail_app_pwd: $(gmail_app_pwd)
-    client_id: $(client_id)
-    client_secret: $(client_secret)
-    refresh_token: $(refresh_token)
-    token_uri: $(token_uri)
-    token_expiry: $(token_expiry)
+    GOOGLE_APPLICATION_CREDENTIALS: $(GOOGLE_APPLICATION_CREDENTIALS)
+
   displayName: 'Map secret variables'
   
 
@@ -45,6 +39,6 @@ steps:
 - script: python main.py
   env:
     gmail_app_pwd: $(gmail_app_pwd)
-    gmail_user: $(gmail_user)
+    GOOGLE_APPLICATION_CREDENTIALS: $(GOOGLE_APPLICATION_CREDENTIALS)
 
 - script: python main.py
