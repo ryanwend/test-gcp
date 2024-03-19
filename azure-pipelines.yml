@@ -47,4 +47,4 @@ steps:
     gmail_app_pwd: $(gmail_app_pwd)
     GOOGLE_APPLICATION_CREDENTIALS: $(GOOGLE_APPLICATION_CREDENTIALS)
 
-- script: python main.py
+
