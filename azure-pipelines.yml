@@ -4,8 +4,8 @@
 # https://aka.ms/yaml
 
 schedules:
-- cron: "35 17 * * *"
-  displayName: Daily 10:35 AM MT trigger
+- cron: "39 16 * * *"
+  displayName: Daily 10:39 AM MT trigger
   branches:
     include:
     - main
